@@ -190,21 +190,21 @@ const Game: FC = () => {
 
   if (showNameModal) {
     return (
-      <div className="modal show d-block" style={{backgroundColor: 'rgba(15, 25, 35, 0.95)'}}>
+      <div className="modal show d-block" style={{backgroundColor: 'rgba(255,255,255,0.95)'}}>
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content bg-dark border border-danger rounded-3 shadow-lg">
-            <div className="modal-header border-bottom border-danger">
+          <div className="modal-content border border-danger rounded-3 shadow-lg">
+            <div className="modal-header border-bottom border-danger bg-light">
               <h2 className="modal-title text-danger w-100 text-center fw-bold">
                 🎯 VALORANT GUESSING GAME
               </h2>
             </div>
-            <div className="modal-body text-center py-4">
+            <div className="modal-body text-center py-4 bg-white">
               <div className="mb-4">
-                <p className="text-light fs-5 mb-3">¿Puedes adivinar el agente con la menor cantidad de pistas?</p>
+                <p className="text-dark fs-5 mb-3">¿Puedes adivinar el agente con la menor cantidad de pistas?</p>
                 <p className="text-muted">Cada partida contiene 5 agentes aleatorios</p>
               </div>
               
-              <div className="game-rules mb-4 p-3 bg-dark border rounded">
+              <div className="game-rules mb-4 p-3 bg-light border rounded">
                 <h5 className="text-warning mb-3">🏆 Sistema de Puntos</h5>
                 <div className="row text-start">
                   <div className="col-6">
@@ -230,7 +230,7 @@ const Game: FC = () => {
                   setShowNameModal(false);
                   setShowRanking(true);
                 }}
-                className="btn btn-outline-light w-100 mt-2"
+                className="btn btn-outline-dark w-100 mt-2"
               >
                 📊 Ver Ranking
               </button>
@@ -270,11 +270,11 @@ const Game: FC = () => {
       {/* Session Header */}
       <div className="row mb-4">
         <div className="col-12">
-          <div className="card bg-dark border-danger shadow">
-            <div className="card-body py-3">
+          <div className="card border-danger shadow">
+            <div className="card-body py-3 bg-light">
               <div className="row align-items-center">
                 <div className="col-md-4">
-                  <h3 className="text-light mb-0">
+                  <h3 className="text-dark mb-0">
                     <span className="text-danger">🎯</span> Partida {gameState.currentRound}/{gameState.totalRounds}
                   </h3>
                 </div>

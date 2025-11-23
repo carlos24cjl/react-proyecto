@@ -45,17 +45,17 @@ const AgentSelector: FC<AgentSelectorProps> = ({
       }
       return 'outline-secondary';
     }
-    return selectedAgent === agentName ? 'warning' : 'outline-light';
+    return selectedAgent === agentName ? 'warning' : 'outline-dark';
   };
 
   return (
     <div className="row">
       <div className="col-12">
-        <div className="card bg-dark border-light">
+        <div className="card border-light shadow">
           <div className="card-header bg-light text-dark">
             <h4 className="mb-0">🎯 Selecciona el Agente</h4>
           </div>
-          <div className="card-body">
+          <div className="card-body bg-white">
             {incorrectGuesses > 0 && (
               <div className="alert alert-danger text-center mb-3">
                 ⚠️ Has fallado {incorrectGuesses} vez(es). -{incorrectGuesses * 10} puntos
@@ -103,7 +103,7 @@ const AgentSelector: FC<AgentSelectorProps> = ({
                         className="rounded-circle mb-2"
                         style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                       />
-                      <small className="fw-bold">{agent.displayName}</small>
+                      <small className="fw-bold text-dark">{agent.displayName}</small>
                       <small className="text-muted">{agent.role.displayName}</small>
                     </div>
                   </button>

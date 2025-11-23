@@ -20,19 +20,19 @@ const ClueDisplay: FC<ClueDisplayProps> = ({
   return (
     <div className="row mb-4">
       <div className="col-12">
-        <div className="card bg-dark border-info">
-          <div className="card-header bg-info text-dark">
+        <div className="card border-info shadow">
+          <div className="card-header bg-info text-white">
             <h4 className="mb-0">🔍 Pistas Disponibles</h4>
           </div>
-          <div className="card-body">
+          <div className="card-body bg-white">
             {cluesUsed === 1 && (
               <div className="alert alert-success mb-3">
                 🎁 <strong>Pista inicial gratuita</strong> - ¡No afecta tu puntuación!
               </div>
             )}
             
-            <div className="bg-dark border rounded p-4 text-center mb-3">
-              <h5 className="text-light">
+            <div className="bg-light border rounded p-4 text-center mb-3">
+              <h5 className="text-dark">
                 <strong>Pista {cluesUsed}:</strong> {clue}
               </h5>
             </div>
@@ -42,7 +42,7 @@ const ClueDisplay: FC<ClueDisplayProps> = ({
                 <button 
                   onClick={onUseClue}
                   disabled={cluesUsed >= 5}
-                  className="btn btn-info btn-lg"
+                  className="btn btn-info btn-lg text-white"
                 >
                   {cluesUsed === 1 ? 'Obtener Segunda Pista' : `Obtener Pista ${cluesUsed + 1}`} 
                   ({cluesUsed}/5 total)
@@ -50,16 +50,16 @@ const ClueDisplay: FC<ClueDisplayProps> = ({
               </div>
             )}
 
-            <div className="mt-3 p-3 bg-dark border rounded">
+            <div className="mt-3 p-3 bg-light border rounded">
               <h6 className="text-warning mb-2">💡 Sistema de puntos:</h6>
               <div className="row text-small">
                 <div className="col-md-6">
-                  <div>• Puntos base: <strong>100 puntos</strong></div>
-                  <div>• Pista inicial: <strong className="text-success">GRATUITA</strong></div>
+                  <div className="text-dark">• Puntos base: <strong>100 puntos</strong></div>
+                  <div className="text-dark">• Pista inicial: <strong className="text-success">GRATUITA</strong></div>
                 </div>
                 <div className="col-md-6">
-                  <div>• Pistas adicionales: <strong className="text-warning">-20 puntos</strong></div>
-                  <div>• Fallos: <strong className="text-danger">-10 puntos</strong></div>
+                  <div className="text-dark">• Pistas adicionales: <strong className="text-warning">-20 puntos</strong></div>
+                  <div className="text-dark">• Fallos: <strong className="text-danger">-10 puntos</strong></div>
                 </div>
               </div>
               {additionalClues > 0 && (

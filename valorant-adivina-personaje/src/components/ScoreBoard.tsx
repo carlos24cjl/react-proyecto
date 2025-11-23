@@ -19,10 +19,10 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({
 }) => {
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'playing': return 'bg-primary';
-      case 'won': return 'bg-success';
-      case 'round-completed': return 'bg-info';
-      default: return 'bg-secondary';
+      case 'playing': return 'bg-primary text-white';
+      case 'won': return 'bg-success text-white';
+      case 'round-completed': return 'bg-info text-white';
+      default: return 'bg-secondary text-white';
     }
   };
 
@@ -38,12 +38,12 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({
   return (
     <div className="row mb-4">
       <div className="col-12">
-        <div className="card bg-dark border-light">
-          <div className="card-body">
+        <div className="card border-light shadow">
+          <div className="card-body bg-white">
             <div className="row text-center">
               <div className="col-md-2 mb-3 mb-md-0">
                 <div className="text-muted small">Ronda</div>
-                <div className="h4 text-light">{currentRound}/{totalRounds}</div>
+                <div className="h4 text-dark">{currentRound}/{totalRounds}</div>
               </div>
               <div className="col-md-2 mb-3 mb-md-0">
                 <div className="text-muted small">Puntuación</div>

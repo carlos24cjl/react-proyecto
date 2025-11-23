@@ -1,7 +1,7 @@
-/* Estilos mínimos personalizados para mejoras visuales */
+/* Tema claro por defecto */
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f1923 0%, #1a2b3c 50%, #2a3b4c 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
 }
 
 /* Mejoras para las cartas */
@@ -61,7 +61,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a2b3c;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -71,4 +71,22 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #ce4a56;
+}
+
+/* Mejor contraste para texto */
+.text-dark {
+  color: #212529 !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* Fondo blanco para mejor legibilidad */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
 }
