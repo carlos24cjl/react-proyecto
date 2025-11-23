@@ -425,4 +425,367 @@ body {
     background: rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.5);
   }
+  /* Estilos para el sistema de partidas y ranking */
+
+/* Modal de nombre de jugador */
+.player-name-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 25, 35, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #1a2b3c, #0f1923);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid #ff4655;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.name-input {
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  border: 2px solid #ff4655;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.start-game-btn, .view-ranking-btn {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-game-btn {
+  background: linear-gradient(45deg, #ff4655, #ce4a56);
+  color: white;
+}
+
+.start-game-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.view-ranking-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid #ff4655;
+}
+
+/* Header de sesión */
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.session-score {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4655;
+}
+
+.ranking-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid #ff4655;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ranking-btn:hover {
+  background: #ff4655;
+}
+
+/* Estadísticas de sesión */
+.session-stats {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.stats-content {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #ff4655;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.stat-value.highlight {
+  color: #ff4655;
+  font-size: 1.5rem;
+}
+
+.stat-value.top-rank {
+  color: #FFD700;
+  font-size: 1.5rem;
+}
+
+.top-score-celebration {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: #0f1923;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 20px 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.stats-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.new-game-btn, .back-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.new-game-btn {
+  background: linear-gradient(45deg, #ff4655, #ce4a56);
+  color: white;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid #ff4655;
+}
+
+.quick-ranking {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.top-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.top-player.first {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: #0f1923;
+  font-weight: bold;
+}
+
+/* Ranking completo */
+.ranking-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.ranking-content {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #ff4655;
+}
+
+.ranking-list {
+  margin: 30px 0;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.ranking-item.top-three {
+  background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  border: 1px solid #FFD700;
+}
+
+.rank-position {
+  width: 60px;
+  text-align: center;
+}
+
+.rank-icon {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.session-date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.session-stats {
+  text-align: right;
+}
+
+.session-stats .score {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4655;
+  display: block;
+}
+
+.session-stats .rounds {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.ranking-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.no-ranking {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.7;
+}
+
+/* Filtros en AgentSelector */
+.filters-container {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.role-filter {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.agent-role-badge {
+  background: rgba(255, 70, 85, 0.3);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+
+/* Ronda completada */
+.round-completed {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 2px solid #4CAF50;
+  margin: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-actions, .ranking-actions {
+    flex-direction: column;
+  }
+  
+  .filters-container {
+    flex-direction: column;
+  }
+  
+  .session-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .ranking-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .player-info, .session-stats {
+    text-align: center;
+  }
+}
 }

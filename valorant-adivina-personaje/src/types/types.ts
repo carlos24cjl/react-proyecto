@@ -4,12 +4,13 @@ export interface Agent {
   description: string;
   displayIcon: string;
   fullPortrait: string;
-  isPlayableCharacter?: boolean;
   background: string;
   role: {
     displayName: string;
+    uuid: string;
   };
   abilities: Ability[];
+  isPlayableCharacter: boolean;
 }
 
 export interface Ability {
@@ -22,8 +23,28 @@ export interface GameState {
   currentAgent: Agent | null;
   cluesUsed: number;
   score: number;
-  gameStatus: 'playing' | 'won' | 'lost';
+  gameStatus: 'playing' | 'won' | 'lost' | 'round-completed';
   selectedAgent: string;
   availableAgents: Agent[];
   incorrectGuesses: number;
+  currentRound: number;
+  totalRounds: number;
+  roundScore: number;
+  sessionScore: number;
+  agentsInSession: Agent[];
+  sessionCompleted: boolean;
+}
+
+export interface GameSession {
+  id: string;
+  playerName: string;
+  totalScore: number;
+  date: string;
+  rounds: number;
+  correctGuesses: number;
+}
+
+export interface Role {
+  displayName: string;
+  uuid: string;
 }
