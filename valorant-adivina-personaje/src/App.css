@@ -1,72 +1,253 @@
-/* Reset y centrado absoluto */
+/* Reset y variables de tema Valorant */
+:root {
+  --valorant-red: #ff4655;
+  --valorant-dark: #0f1419;
+  --valorant-darker: #0a0e12;
+  --valorant-gray: #1a1f25;
+  --valorant-accent: #f7b500;
+  --valorant-text: #ece8e1;
+  --valorant-text-muted: #8b949e;
+  --card-bg: #10161c;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+  background: var(--valorant-darker);
+  color: var(--valorant-text);
 }
 
 .app-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+  background: linear-gradient(180deg, var(--valorant-dark) 0%, var(--valorant-darker) 100%);
+  color: var(--valorant-text);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .app-header {
-  background: white;
-  padding: 2rem;
+  width: 100%;
+  background: transparent;
+  padding: 2rem 1rem;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .app-header h1 {
-  color: #dc3545;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  color: var(--valorant-red);
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255, 70, 85, 0.3);
 }
 
 .app-header p {
-  color: #6c757d;
-  font-size: 1.2rem;
+  color: var(--valorant-text-muted);
+  opacity: 0.9;
+  font-size: 1.1rem;
 }
 
 .app-main {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
   width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Contenedor principal centrado */
 .main-content {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Para todos los componentes hijos */
 .component-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Grid de agentes centrado */
+.centered-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== OVERRIDES DE BOOTSTRAP PARA TEMA OSCURO ===== */
+
+/* Cards oscuras */
+.card {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--valorant-gray) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--valorant-text);
+}
+
+.card-header {
+  background: linear-gradient(135deg, rgba(255, 70, 85, 0.1) 0%, rgba(255, 70, 85, 0.05) 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: var(--valorant-text) !important;
+}
+
+.card-body {
+  color: var(--valorant-text) !important;
+}
+
+/* Backgrounds oscuros */
+.bg-light, .bg-white {
+  background: var(--card-bg) !important;
+  color: var(--valorant-text) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Textos en fondos oscuros */
+.bg-light, .bg-white,
+.card.bg-light, .card.bg-white,
+.alert:not(.alert-success):not(.alert-danger):not(.alert-warning) {
+  color: var(--valorant-text) !important;
+}
+
+.bg-light .text-dark,
+.bg-white .text-dark,
+.card .text-dark {
+  color: var(--valorant-text) !important;
+}
+
+/* Alerts oscuros */
+.alert {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--valorant-text) !important;
+}
+
+.alert-success {
+  background: rgba(40, 167, 69, 0.15) !important;
+  border-color: rgba(40, 167, 69, 0.3) !important;
+  color: #75b798 !important;
+}
+
+.alert-danger {
+  background: rgba(255, 70, 85, 0.15) !important;
+  border-color: rgba(255, 70, 85, 0.3) !important;
+  color: #ff8a98 !important;
+}
+
+.alert-warning {
+  background: rgba(247, 181, 0, 0.15) !important;
+  border-color: rgba(247, 181, 0, 0.3) !important;
+  color: #f7d500 !important;
+}
+
+.alert-info {
+  background: rgba(23, 162, 184, 0.15) !important;
+  border-color: rgba(23, 162, 184, 0.3) !important;
+  color: #6edff6 !important;
+}
+
+/* Botones */
+.btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--valorant-text) !important;
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.btn-outline-dark {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--valorant-text) !important;
+}
+
+.btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Inputs y selects */
+.form-control, .form-select {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--valorant-text) !important;
+}
+
+.form-control:focus, .form-select:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--valorant-red) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 70, 85, 0.2) !important;
+  color: var(--valorant-text) !important;
+}
+
+/* Badges */
+.badge {
+  color: var(--valorant-text) !important;
+}
+
+.badge.bg-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3) !important;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+}
+
+.badge.bg-danger {
+  background: linear-gradient(135deg, var(--valorant-red), #cc3547) !important;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(135deg, #ffc107, #e0a800) !important;
+  color: #000 !important;
+}
+
+.badge.bg-info {
+  background: linear-gradient(135deg, #17a2b8, #138496) !important;
+}
+
+.badge.bg-secondary {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Progress bars */
+.progress {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--valorant-red), var(--valorant-accent)) !important;
+}
+
+/* Modal oscuro */
+.modal-content {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--valorant-gray) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--valorant-text) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--valorant-text) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== COMPONENTES ESPECÍFICOS ===== */
+
+/* Grid de agentes */
 .agents-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
   justify-items: center;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -77,29 +258,71 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* Cards centradas */
-.centered-card {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 2rem auto;
+.agent-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--valorant-red);
+  transform: translateY(-2px);
+}
+
+/* Botones Valorant */
+.valorant-btn {
+  background: var(--valorant-red);
+  border-color: var(--valorant-red);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.valorant-btn:hover {
+  background: #e63e4d;
+  border-color: #e63e4d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 70, 85, 0.4);
+}
+
+.valorant-btn.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--valorant-text);
+}
+
+.valorant-btn.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--valorant-red);
+}
+
+/* Text colors para buen contraste */
+.text-dark {
+  color: var(--valorant-text) !important;
+}
+
+.text-muted {
+  color: var(--valorant-text-muted) !important;
+}
+
+.text-light {
+  color: var(--valorant-text) !important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .app-header h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
   .agents-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.6rem;
   }
   
   .agent-button {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
   }
   
   .app-main {

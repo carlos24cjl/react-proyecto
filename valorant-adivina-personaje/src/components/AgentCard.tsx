@@ -1,4 +1,3 @@
-import { } from 'react';
 import type { FC } from 'react';
 import type { Agent } from '../types/types';
 
@@ -27,11 +26,11 @@ const AgentCard: FC<AgentCardProps> = ({ agent, revealed, pointsEarned }) => {
   return (
     <div className="row mt-4">
       <div className="col-12">
-        <div className="card bg-dark border-success shadow-lg">
-          <div className="card-header bg-success text-dark text-center">
+        <div className="card valorant-card shadow-lg">
+          <div className="card-header text-center">
             <h3 className="mb-0 fw-bold">🎉 ¡Agente Revelado!</h3>
             {pointsEarned !== undefined && pointsEarned > 0 && (
-              <div className="badge bg-warning text-dark fs-6 mt-2">
+              <div className="valorant-badge fs-6 mt-2">
                 +{pointsEarned} puntos ganados
               </div>
             )}
@@ -49,7 +48,7 @@ const AgentCard: FC<AgentCardProps> = ({ agent, revealed, pointsEarned }) => {
               <div className="col-md-8">
                 <h2 className="text-danger fw-bold mb-3">{agent.displayName}</h2>
                 <div className="mb-3">
-                  <span className="badge bg-primary fs-6">{agent.role.displayName}</span>
+                  <span className="valorant-badge fs-6">{agent.role.displayName}</span>
                 </div>
                 <p className="text-light mb-4">{agent.description}</p>
                 

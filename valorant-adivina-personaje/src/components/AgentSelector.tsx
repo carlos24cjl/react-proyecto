@@ -50,13 +50,13 @@ const AgentSelector: FC<AgentSelectorProps> = ({
 
   return (
   <div className="component-container">
-    <div className="centered-card card border-light shadow">
-      <div className="card-header bg-light text-dark text-center">
+    <div className="centered-card card valorant-card shadow">
+      <div className="card-header text-center">
         <h4 className="mb-0">🎯 Selecciona el Agente</h4>
       </div>
       <div className="card-body">
         {incorrectGuesses > 0 && (
-          <div className="alert alert-danger text-center mb-3">
+          <div className="valorant-alert valorant-alert-danger text-center mb-3">
             ⚠️ Has fallado {incorrectGuesses} vez(es). -{incorrectGuesses * 10} puntos
           </div>
         )}
@@ -92,13 +92,13 @@ const AgentSelector: FC<AgentSelectorProps> = ({
               key={agent.uuid}
               onClick={() => onSelectAgent(agent.displayName)}
               disabled={gameStatus !== 'playing'}
-              className={`btn btn-${getButtonVariant(agent.displayName)} agent-button`}
+              className={`btn btn-${getButtonVariant(agent.displayName)} agent-button valorant-agent`}
             >
               <div className="d-flex flex-column align-items-center">
                 <img 
                   src={agent.displayIcon} 
                   alt={agent.displayName}
-                  className="rounded-circle mb-2"
+                  className="mb-2"
                   style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                 />
                 <small className="fw-bold">{agent.displayName}</small>
@@ -115,7 +115,7 @@ const AgentSelector: FC<AgentSelectorProps> = ({
         )}
 
         {selectedAgent && gameStatus === 'playing' && (
-          <div className="alert alert-warning text-center mt-3">
+          <div className="valorant-alert valorant-alert-warning text-center mt-3">
             ❌ Incorrecto. -10 puntos. ¡Sigue intentando!
           </div>
         )}

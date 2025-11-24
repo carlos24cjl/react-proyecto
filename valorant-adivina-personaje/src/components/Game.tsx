@@ -5,7 +5,6 @@ import AgentCard from './AgentCard';
 import ClueDisplay from './ClueDisplay';
 import ScoreBoard from './ScoreBoard';
 import AgentSelector from './AgentSelector';
-import SessionStats from './SessionStats';
 import Ranking from './Ranking';
 
 const Game: FC = () => {
@@ -26,7 +25,7 @@ const Game: FC = () => {
   });
 
   const [allAgents, setAllAgents] = useState<Agent[]>([]);
-  const [showSessionStats, setShowSessionStats] = useState(false);
+  
   const [ranking, setRanking] = useState<GameSession[]>([]);
   const [showRanking, setShowRanking] = useState(false);
   const [showNameModal, setShowNameModal] = useState(true);
@@ -38,23 +37,10 @@ const Game: FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchAgents = async () => {
-      try {
-        const response = await fetch('https://valorant-api.com/v1/agents');
-        const data = await response.json();
-        const playableAgents = data.data.filter((agent: Agent) => 
-          agent.isPlayableCharacter && agent.fullPortrait
-        );
-        setAllAgents(playableAgents);
-        initializeSession(playableAgents);
-      } catch (error) {
-        console.error('Error fetching agents:', error);
-      }
-    };
-
-    fetchAgents();
-  }, []);
+  const getRandomAgents = (agents: Agent[], count: number): Agent[] => {
+    const shuffled = [...agents].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
 
   const initializeSession = (agents: Agent[]) => {
     const sessionAgents = getRandomAgents(agents, 5);
@@ -76,10 +62,25 @@ const Game: FC = () => {
     }));
   };
 
-  const getRandomAgents = (agents: Agent[], count: number): Agent[] => {
-    const shuffled = [...agents].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-  };
+  useEffect(() => {
+    const fetchAgents = async () => {
+      try {
+        const response = await fetch('https://valorant-api.com/v1/agents');
+        const data = await response.json();
+        const playableAgents = data.data.filter((agent: Agent) => 
+          agent.isPlayableCharacter && agent.fullPortrait
+        );
+        setAllAgents(playableAgents);
+        initializeSession(playableAgents);
+      } catch (error) {
+        console.error('Error fetching agents:', error);
+      }
+    };
+
+    fetchAgents();
+  }, []);
+
+ 
 
   const getNextClue = () => {
     if (!gameState.currentAgent) return null;
@@ -176,13 +177,14 @@ const Game: FC = () => {
       ...prev,
       sessionCompleted: true
     }));
-    setShowSessionStats(true);
+    // Mostrar ranking automáticamente al completar la sesión
+    setShowRanking(true);
   };
 
   const startNewSession = () => {
     if (allAgents.length > 0) {
       initializeSession(allAgents);
-      setShowSessionStats(false);
+      setShowRanking(false);
     }
   };
 
@@ -190,47 +192,40 @@ const Game: FC = () => {
 
   if (showNameModal) {
     return (
-      <div className="modal show d-block" style={{backgroundColor: 'rgba(255,255,255,0.95)'}}>
+      <div className="modal show d-block valorant-modal">
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content border border-danger rounded-3 shadow-lg">
-            <div className="modal-header border-bottom border-danger bg-light">
-              <h2 className="modal-title text-danger w-100 text-center fw-bold">
-                🎯 VALORANT GUESSING GAME
-              </h2>
+          <div className="modal-content shadow-lg">
+            <div className="modal-header border-bottom">
+              <h2 className="modal-title valorant-badge w-100 text-center fw-bold">🎯 VALORANT GUESSING GAME</h2>
             </div>
-            <div className="modal-body text-center py-4 bg-white">
-              <div className="mb-4">
-                <p className="text-dark fs-5 mb-3">¿Puedes adivinar el agente con la menor cantidad de pistas?</p>
-                <p className="text-muted">Cada partida contiene 5 agentes aleatorios</p>
-              </div>
-              
-              <div className="game-rules mb-4 p-3 bg-light border rounded">
+            <div className="modal-body text-center py-4">
+              <p className="text-light fs-5 mb-3">¿Puedes adivinar el agente con la menor cantidad de pistas?</p>
+              <p className="text-muted">Cada partida contiene 5 agentes aleatorios</p>
+
+              <div className="game-rules mb-4 p-3 valorant-alert border rounded">
                 <h5 className="text-warning mb-3">🏆 Sistema de Puntos</h5>
                 <div className="row text-start">
                   <div className="col-6">
-                    <small className="text-success">✓ Pista inicial: GRATIS</small><br/>
+                    <small className="text-success">✓ Pista inicial: GRATIS</small><br />
                     <small className="text-warning">✓ Pistas extra: -20 pts</small>
                   </div>
                   <div className="col-6">
-                    <small className="text-danger">✗ Fallos: -10 pts</small><br/>
+                    <small className="text-danger">✗ Fallos: -10 pts</small><br />
                     <small className="text-info">🎯 Máximo: 100 pts/ronda</small>
                   </div>
                 </div>
               </div>
-              
-              <button 
-                onClick={() => setShowNameModal(false)}
-                className="btn btn-danger btn-lg w-100 fw-bold py-3"
-              >
+
+              <button onClick={() => setShowNameModal(false)} className="btn btn-lg w-100 fw-bold py-3 valorant-btn">
                 🎮 COMENZAR PARTIDA
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => {
                   setShowNameModal(false);
                   setShowRanking(true);
                 }}
-                className="btn btn-outline-dark w-100 mt-2"
+                className="btn btn-outline-dark w-100 mt-2 valorant-btn btn-outline"
               >
                 📊 Ver Ranking
               </button>
@@ -248,41 +243,25 @@ const Game: FC = () => {
           <Ranking 
             ranking={ranking}
             onBack={() => setShowRanking(false)}
-            onNewGame={() => setShowRanking(false)}
+            onNewGame={startNewSession}
           />
         </div>
       </div>
     );
   }
 
-  if (showSessionStats) {
-    return (
-      <div className="main-content">
-        <div className="component-container">
-          <SessionStats
-            gameState={gameState}
-            ranking={ranking}
-            onNewGame={startNewSession}
-            onViewRanking={() => {
-              setShowSessionStats(false);
-              setShowRanking(true);
-            }}
-          />
-        </div>
-      </div>
-    );
-  }
+  
 
   return (
     <div className="main-content">
       
       {/* Session Header */}
       <div className="component-container">
-        <div className="centered-card card border-danger shadow">
-          <div className="card-body text-center py-3 bg-light">
+        <div className="centered-card card valorant-card shadow">
+          <div className="card-body text-center py-3">
             <div className="row align-items-center">
               <div className="col-md-4">
-                <h3 className="text-dark mb-0">
+              <h3 className="text-light mb-0">
                   <span className="text-danger">🎯</span> Partida {gameState.currentRound}/{gameState.totalRounds}
                 </h3>
               </div>
@@ -361,10 +340,10 @@ const Game: FC = () => {
 
           {gameState.gameStatus === 'round-completed' && (
             <div className="component-container">
-              <div className="alert alert-success border-0 shadow text-center">
-                <h2 className="mb-2">🎉 ¡Partida Completada!</h2>
-                <p className="mb-0">Calculando puntuación final...</p>
-              </div>
+              <div className="valorant-alert valorant-alert-success border-0 shadow text-center">
+                    <h2 className="mb-2">🎉 ¡Partida Completada!</h2>
+                    <p className="mb-0">Calculando puntuación final...</p>
+                  </div>
             </div>
           )}
         </>

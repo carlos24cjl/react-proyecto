@@ -1,4 +1,5 @@
 import Game from './components/Game';
+import Hero from './components/Hero';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <p>¿Puedes adivinar el agente con la menor cantidad de pistas?</p>
       </header>
       <main className="app-main">
+        <Hero />
         <Game />
       </main>
     </div>

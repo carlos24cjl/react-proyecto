@@ -10,9 +10,9 @@ interface RankingProps {
 const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
   const getRankIcon = (position: number) => {
     switch (position) {
-      case 0: return { icon: '🥇', class: 'bg-warning text-dark' };
-      case 1: return { icon: '🥈', class: 'bg-secondary' };
-      case 2: return { icon: '🥉', class: 'bg-danger' };
+      case 0: return { icon: '🥇', class: 'bg-warning text-white' };
+      case 1: return { icon: '🥈', class: 'bg-secondary text-white' };
+      case 2: return { icon: '🥉', class: 'bg-danger text-white' };
       default: return { icon: `#${position + 1}`, class: 'bg-dark border text-white' };
     }
   };
@@ -35,12 +35,12 @@ const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
         </div>
 
         {ranking.length === 0 ? (
-          <div className="card border-danger text-center py-5">
+          <div className="card valorant-card text-center py-5">
             <div className="card-body">
               <div className="text-muted fs-1 mb-3">🎯</div>
-              <h3 className="text-dark mb-3">¡Aún no hay partidas!</h3>
+              <h3 className="text-light mb-3">¡Aún no hay partidas!</h3>
               <p className="text-muted mb-4">Sé el primero en aparecer en el ranking</p>
-              <button onClick={onNewGame} className="btn btn-danger btn-lg px-5">
+              <button onClick={onNewGame} className="btn btn-lg valorant-btn px-5">
                 🎮 Jugar Mi Primera Partida
               </button>
             </div>
@@ -50,40 +50,40 @@ const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
             {/* Top 3 Podium */}
             <div className="row mb-5">
               <div className="col-12">
-                <h3 className="text-center text-dark mb-4">Podium de Campeones</h3>
+                <h3 className="text-center text-light mb-4">Podium de Campeones</h3>
                 <div className="row align-items-end justify-content-center">
                   {ranking.slice(0, 3).map((session, index) => (
                     <div key={session.id} className={`col-md-4 ${index === 0 ? 'order-2' : index === 1 ? 'order-1' : 'order-3'}`}>
-                      <div className={`card ${index === 0 ? 'border-warning bg-warning bg-opacity-10' : 'border-secondary'} shadow text-center h-100`}
-                           style={{ transform: index === 0 ? 'scale(1.05)' : 'scale(0.95)' }}>
-                        <div className="card-body py-4">
-                          <div className={`badge ${getRankIcon(index).class} fs-4 mb-3`}>
-                            {getRankIcon(index).icon}
+                        <div className={`card valorant-card ${index === 0 ? 'shadow-lg' : 'shadow'} text-center h-100`}
+                             style={{ transform: index === 0 ? 'scale(1.05)' : 'scale(0.95)' }}>
+                          <div className="card-body py-4">
+                            <div className={`valorant-badge fs-4 mb-3`}>
+                              {getRankIcon(index).icon}
+                            </div>
+                            <div className="text-light fs-2 fw-bold mb-2">
+                              {session.totalScore}
+                            </div>
+                            <div className="text-muted small">puntos</div>
+                            <div className="mt-3">
+                              <span className={`valorant-badge`}>
+                                {getTier(session.totalScore).name}
+                              </span>
+                            </div>
+                            <div className="text-muted small mt-2">
+                              {session.correctGuesses}/{session.rounds} agentes
+                            </div>
+                            <div className="text-muted small">{session.date}</div>
                           </div>
-                          <div className="text-dark fs-2 fw-bold mb-2">
-                            {session.totalScore}
-                          </div>
-                          <div className="text-muted small">puntos</div>
-                          <div className="mt-3">
-                            <span className={`badge ${getTier(session.totalScore).bg} text-dark`}>
-                              {getTier(session.totalScore).name}
-                            </span>
-                          </div>
-                          <div className="text-muted small mt-2">
-                            {session.correctGuesses}/{session.rounds} agentes
-                          </div>
-                          <div className="text-muted small">{session.date}</div>
                         </div>
                       </div>
-                    </div>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Full Ranking List */}
-            <div className="card border-light">
-              <div className="card-header bg-light text-dark">
+            <div className="card valorant-card">
+              <div className="card-header text-light">
                 <h4 className="mb-0 fw-bold">Clasificación Completa</h4>
               </div>
               <div className="card-body p-0">
@@ -92,7 +92,7 @@ const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
                   const tier = getTier(session.totalScore);
                   
                   return (
-                    <div key={session.id} className={`border-bottom border-secondary p-3 ${index < 3 ? 'bg-light' : ''}`}>
+                    <div key={session.id} className={`border-bottom border-secondary p-3`}>
                       <div className="row align-items-center">
                         <div className="col-auto">
                           <span className={`badge ${rankInfo.class} fs-6`}>
@@ -102,14 +102,14 @@ const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
                         <div className="col">
                           <div className="d-flex justify-content-between align-items-center">
                             <div>
-                              <div className="text-dark fw-bold fs-5">
+                              <div className="text-light fw-bold fs-5">
                                 {session.totalScore} puntos
                               </div>
                               <div className="text-muted small">
                                 {session.correctGuesses}/{session.rounds} agentes • {session.date}
                               </div>
                             </div>
-                            <span className={`badge ${tier.bg} text-dark`}>
+                            <span className={`valorant-badge`}>
                               {tier.name}
                             </span>
                           </div>
@@ -131,38 +131,38 @@ const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
             </button>
           </div>
           <div className="col-md-6 mb-2">
-            <button onClick={onBack} className="btn btn-outline-dark btn-lg w-100 py-3">
+            <button onClick={onBack} className="btn btn-outline-light btn-lg w-100 py-3">
               ← Volver al Juego
             </button>
           </div>
         </div>
 
         {/* Tier Legend */}
-        <div className="card border-info mt-4">
-          <div className="card-header bg-info text-dark text-center">
+        <div className="card valorant-card mt-4">
+          <div className="card-header text-light text-center">
             <h5 className="mb-0 fw-bold">Leyenda de Tiers</h5>
           </div>
           <div className="card-body">
             <div className="row text-center g-3">
               <div className="col">
-                <span className="badge bg-warning text-dark me-2">R</span>
-                <small className="text-dark">Radiante (400+ pts)</small>
+                <span className="valorant-badge me-2">R</span>
+                <small className="text-light">Radiante (400+ pts)</small>
               </div>
               <div className="col">
-                <span className="badge bg-info text-dark me-2">D</span>
-                <small className="text-dark">Diamante (300-399)</small>
+                <span className="valorant-badge me-2">D</span>
+                <small className="text-light">Diamante (300-399)</small>
               </div>
               <div className="col">
-                <span className="badge bg-success me-2">P</span>
-                <small className="text-dark">Platino (200-299)</small>
+                <span className="valorant-badge me-2">P</span>
+                <small className="text-light">Platino (200-299)</small>
               </div>
               <div className="col">
-                <span className="badge bg-warning text-dark me-2">O</span>
-                <small className="text-dark">Oro (100-199)</small>
+                <span className="valorant-badge me-2">O</span>
+                <small className="text-light">Oro (100-199)</small>
               </div>
               <div className="col">
-                <span className="badge bg-secondary me-2">S</span>
-                <small className="text-dark">Plata (0-99)</small>
+                <span className="valorant-badge me-2">S</span>
+                <small className="text-light">Plata (0-99)</small>
               </div>
             </div>
           </div>

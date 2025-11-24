@@ -1,4 +1,4 @@
-import React from 'react';
+import type { FC } from 'react';
 
 interface ScoreBoardProps {
   score: number;
@@ -9,7 +9,7 @@ interface ScoreBoardProps {
   totalRounds?: number;
 }
 
-const ScoreBoard: React.FC<ScoreBoardProps> = ({ 
+const ScoreBoard: FC<ScoreBoardProps> = ({ 
   score, 
   cluesUsed, 
   gameStatus, 
@@ -19,10 +19,10 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({
 }) => {
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'playing': return 'bg-primary text-white';
-      case 'won': return 'bg-success text-white';
-      case 'round-completed': return 'bg-info text-white';
-      default: return 'bg-secondary text-white';
+      case 'playing': return 'valorant-status-playing';
+      case 'won': return 'valorant-status-won';
+      case 'round-completed': return 'valorant-status-round';
+      default: return 'valorant-status-default';
     }
   };
 
@@ -38,12 +38,12 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({
   return (
     <div className="row mb-4">
       <div className="col-12">
-        <div className="card border-light shadow">
-          <div className="card-body bg-white">
+        <div className="card valorant-card shadow">
+          <div className="card-body">
             <div className="row text-center">
               <div className="col-md-2 mb-3 mb-md-0">
                 <div className="text-muted small">Ronda</div>
-                <div className="h4 text-dark">{currentRound}/{totalRounds}</div>
+                <div className="h4 text-light">{currentRound}/{totalRounds}</div>
               </div>
               <div className="col-md-2 mb-3 mb-md-0">
                 <div className="text-muted small">Puntuación</div>
