@@ -1,5 +1,4 @@
 import Game from './components/Game';
-import Hero from './components/Hero';
 import './App.css';
 
 function App() {

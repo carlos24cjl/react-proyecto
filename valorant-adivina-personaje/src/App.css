@@ -238,6 +238,135 @@ body, html, #root {
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* ===== FIX COMPLETO PARA SELECT DROPDOWN ===== */
+
+/* Estilo nuclear para el select y sus opciones */
+.form-select,
+.role-filter,
+.valorant-select {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--valorant-gray) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: var(--valorant-text) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238b949e' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  background-size: 16px 12px !important;
+}
+
+/* Remover el estilo por defecto del navegador */
+.form-select option,
+.role-filter option,
+.valorant-select option {
+  background: var(--card-bg) !important;
+  color: var(--valorant-text) !important;
+  padding: 12px !important;
+  border: none !important;
+}
+
+/* Para Chrome, Safari, Edge */
+.form-select option:checked,
+.role-filter option:checked,
+.valorant-select option:checked {
+  background: var(--valorant-red) !important;
+  color: white !important;
+}
+
+.form-select option:hover,
+.role-filter option:hover,
+.valorant-select option:hover {
+  background: var(--valorant-red) !important;
+  color: white !important;
+}
+
+/* Para Firefox */
+@-moz-document url-prefix() {
+  .form-select,
+  .role-filter,
+  .valorant-select {
+    background-color: var(--card-bg) !important;
+    color: var(--valorant-text) !important;
+  }
+  
+  .form-select option,
+  .role-filter option,
+  .valorant-select option {
+    background-color: var(--card-bg) !important;
+    color: var(--valorant-text) !important;
+  }
+  
+  .form-select option:checked,
+  .role-filter option:checked,
+  .valorant-select option:checked {
+    background-color: var(--valorant-red) !important;
+    color: white !important;
+  }
+}
+
+/* Para Internet Explorer (por si acaso) */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-select,
+  .role-filter,
+  .valorant-select {
+    background: var(--card-bg) !important;
+    color: var(--valorant-text) !important;
+  }
+}
+
+/* Estados del select */
+.form-select:hover:not(:disabled),
+.role-filter:hover:not(:disabled),
+.valorant-select:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+}
+
+.form-select:focus,
+.role-filter:focus,
+.valorant-select:focus {
+  border-color: var(--valorant-red) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 70, 85, 0.25) !important;
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+}
+
+/* Deshabilitado */
+.form-select:disabled,
+.role-filter:disabled,
+.valorant-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Solución alternativa: Si sigue sin funcionar, usar un wrapper */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--valorant-text-muted);
+  pointer-events: none;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding-right: 35px !important;
+}
+
 /* ===== ARREGLOS DE TEXTO INVISIBLE ===== */
 
 /* Texto "Puntuación Total" y otros textos muted */
@@ -369,82 +498,6 @@ body, html, #root {
 .btn-outline-light:hover,
 .btn-outline-dark:hover {
   color: var(--valorant-dark) !important;
-}
-
-/* ===== SELECT PERSONALIZADO VALORANT ===== */
-.valorant-select {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: var(--valorant-text) !important;
-  border-radius: 8px !important;
-  padding: 12px 16px !important;
-  font-size: 14px !important;
-  backdrop-filter: blur(10px) !important;
-  transition: all 0.3s ease !important;
-}
-
-.valorant-select:hover:not(:disabled) {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-}
-
-.valorant-select:focus {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: var(--valorant-red) !important;
-  box-shadow: 0 0 0 0.2rem rgba(255, 70, 85, 0.25) !important;
-  color: var(--valorant-text) !important;
-}
-
-.valorant-select:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* Para navegadores Webkit (Chrome, Safari) */
-.valorant-select option {
-  background: var(--card-bg) !important;
-  color: var(--valorant-text) !important;
-  padding: 12px !important;
-  border: none !important;
-}
-
-.valorant-select option:hover {
-  background: var(--valorant-red) !important;
-  color: white !important;
-}
-
-.valorant-select option:checked {
-  background: var(--valorant-red) !important;
-  color: white !important;
-}
-
-/* Para Firefox */
-@-moz-document url-prefix() {
-  .valorant-select option {
-    background: var(--card-bg) !important;
-    color: var(--valorant-text) !important;
-  }
-  
-  .valorant-select option:checked {
-    background: var(--valorant-red) !important;
-    color: white !important;
-  }
-}
-
-/* Contenedor del filtro para mejor espaciado */
-.role-filter-container {
-  position: relative;
-}
-
-.role-filter-container::after {
-  content: "▼";
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--valorant-text-muted);
-  pointer-events: none;
-  font-size: 12px;
 }
 
 /* ===== COMPONENTES ESPECÍFICOS ===== */
