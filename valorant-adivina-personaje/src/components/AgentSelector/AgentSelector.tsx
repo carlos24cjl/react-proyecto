@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
-import type { FC } from 'react';
-import type { Agent } from '../types/types';
+import type { Agent } from '../../types/types';
+import './AgentSelector.css';
 
 interface AgentSelectorProps {
   agents: Agent[];
@@ -10,13 +10,13 @@ interface AgentSelectorProps {
   incorrectGuesses: number;
 }
 
-const AgentSelector: FC<AgentSelectorProps> = ({ 
+const AgentSelector = ({ 
   agents, 
   selectedAgent, 
   onSelectAgent, 
   gameStatus,
   incorrectGuesses
-}) => {
+}: AgentSelectorProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
 

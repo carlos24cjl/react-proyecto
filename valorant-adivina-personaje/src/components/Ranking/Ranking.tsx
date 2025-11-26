@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import type { GameSession } from '../types/types';
+import type { GameSession } from '../../types/types';
+import './Ranking.css';
 
 interface RankingProps {
   ranking: GameSession[];
@@ -7,7 +7,7 @@ interface RankingProps {
   onNewGame: () => void;
 }
 
-const Ranking: FC<RankingProps> = ({ ranking, onBack, onNewGame }) => {
+const Ranking = ({ ranking, onBack, onNewGame }: RankingProps) => {
   const getRankIcon = (position: number) => {
     switch (position) {
       case 0: return { icon: '🥇', class: 'bg-warning text-white' };

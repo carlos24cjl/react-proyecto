@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import type { Agent } from '../types/types';
+import type { Agent } from '../../types/types';
+import './AgentCard.css';
 
 interface AgentCardProps {
   agent: Agent;
@@ -7,7 +7,7 @@ interface AgentCardProps {
   pointsEarned?: number;
 }
 
-const AgentCard: FC<AgentCardProps> = ({ agent, revealed, pointsEarned }) => {
+const AgentCard = ({ agent, revealed, pointsEarned }: AgentCardProps) => {
   if (!revealed) {
     return (
       <div className="row mt-4">

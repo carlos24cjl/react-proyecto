@@ -1,4 +1,4 @@
-/* Reset y variables de tema Valorant */
+/* ===== VARIABLES GLOBALES Y TEMA VALORANT ===== */
 :root {
   --valorant-red: #ff4655;
   --valorant-dark: #0f1419;
@@ -22,6 +22,7 @@ body, html, #root {
   color: var(--valorant-text);
 }
 
+/* ===== APP LAYOUT ===== */
 .app-container {
   min-height: 100vh;
   background: linear-gradient(180deg, var(--valorant-dark) 0%, var(--valorant-darker) 100%);
@@ -61,25 +62,9 @@ body, html, #root {
   align-items: center;
 }
 
-.main-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+/* ===== BOOTSTRAP OVERRIDES PARA TEMA OSCURO ===== */
 
-.component-container {
-  width: 100%;
-  margin-bottom: 1.5rem;
-}
-
-.centered-card {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* ===== OVERRIDES DE BOOTSTRAP PARA TEMA OSCURO ===== */
-
-/* Cards oscuras */
+/* Cards */
 .card {
   background: linear-gradient(135deg, var(--card-bg) 0%, var(--valorant-gray) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -104,7 +89,6 @@ body, html, #root {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Textos en fondos oscuros */
 .bg-light, .bg-white,
 .card.bg-light, .card.bg-white,
 .alert:not(.alert-success):not(.alert-danger):not(.alert-warning) {
@@ -117,7 +101,7 @@ body, html, #root {
   color: var(--valorant-text) !important;
 }
 
-/* Alerts oscuros */
+/* Alerts */
 .alert {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -169,6 +153,31 @@ body, html, #root {
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
+.valorant-btn {
+  background: var(--valorant-red);
+  border-color: var(--valorant-red);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.valorant-btn:hover {
+  background: #e63e4d;
+  border-color: #e63e4d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 70, 85, 0.4);
+}
+
+.valorant-btn.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--valorant-text);
+}
+
+.valorant-btn.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--valorant-red);
+}
+
 /* Inputs y selects */
 .form-control, .form-select {
   background: rgba(255, 255, 255, 0.05) !important;
@@ -181,6 +190,11 @@ body, html, #root {
   border-color: var(--valorant-red) !important;
   box-shadow: 0 0 0 0.2rem rgba(255, 70, 85, 0.2) !important;
   color: var(--valorant-text) !important;
+}
+
+.form-control::placeholder {
+  color: var(--valorant-text-muted) !important;
+  opacity: 0.7 !important;
 }
 
 /* Badges */
@@ -213,7 +227,7 @@ body, html, #root {
   background: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Progress bars */
+/* Progress */
 .progress {
   background: rgba(255, 255, 255, 0.1) !important;
 }
@@ -222,7 +236,7 @@ body, html, #root {
   background: linear-gradient(90deg, var(--valorant-red), var(--valorant-accent)) !important;
 }
 
-/* Modal oscuro */
+/* Modales */
 .modal-content {
   background: linear-gradient(135deg, var(--card-bg) 0%, var(--valorant-gray) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -238,9 +252,7 @@ body, html, #root {
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* ===== FIX COMPLETO PARA SELECT DROPDOWN ===== */
-
-/* Estilo nuclear para el select y sus opciones */
+/* Select dropdown oscuro */
 .form-select,
 .role-filter,
 .valorant-select {
@@ -259,7 +271,6 @@ body, html, #root {
   background-size: 16px 12px !important;
 }
 
-/* Remover el estilo por defecto del navegador */
 .form-select option,
 .role-filter option,
 .valorant-select option {
@@ -269,7 +280,6 @@ body, html, #root {
   border: none !important;
 }
 
-/* Para Chrome, Safari, Edge */
 .form-select option:checked,
 .role-filter option:checked,
 .valorant-select option:checked {
@@ -284,7 +294,7 @@ body, html, #root {
   color: white !important;
 }
 
-/* Para Firefox */
+/* Firefox select fix */
 @-moz-document url-prefix() {
   .form-select,
   .role-filter,
@@ -308,17 +318,6 @@ body, html, #root {
   }
 }
 
-/* Para Internet Explorer (por si acaso) */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .form-select,
-  .role-filter,
-  .valorant-select {
-    background: var(--card-bg) !important;
-    color: var(--valorant-text) !important;
-  }
-}
-
-/* Estados del select */
 .form-select:hover:not(:disabled),
 .role-filter:hover:not(:disabled),
 .valorant-select:hover:not(:disabled) {
@@ -334,7 +333,6 @@ body, html, #root {
   background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
 }
 
-/* Deshabilitado */
 .form-select:disabled,
 .role-filter:disabled,
 .valorant-select:disabled {
@@ -343,134 +341,41 @@ body, html, #root {
   background: rgba(255, 255, 255, 0.03) !important;
 }
 
-/* Solución alternativa: Si sigue sin funcionar, usar un wrapper */
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+/* ===== UTILIDADES DE TEXTO ===== */
+.text-dark {
+  color: var(--valorant-text) !important;
 }
 
-.select-wrapper::after {
-  content: "▼";
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--valorant-text-muted);
-  pointer-events: none;
-  font-size: 12px;
-  z-index: 1;
-}
-
-.select-wrapper select {
-  width: 100%;
-  padding-right: 35px !important;
-}
-
-/* ===== ARREGLOS DE TEXTO INVISIBLE ===== */
-
-/* Texto "Puntuación Total" y otros textos muted */
 .text-muted {
-  color: #8b949e !important;
+  color: var(--valorant-text-muted) !important;
   opacity: 0.8 !important;
 }
 
-/* Rol de los agentes debajo del nombre */
-.agent-button .text-muted {
-  color: #a8b5c0 !important;
-  font-size: 0.75rem !important;
-  margin-top: 2px !important;
-}
-
-/* Textos en cards que no son visibles */
-.card .text-dark,
-.card .text-muted {
+.text-light {
   color: var(--valorant-text) !important;
 }
 
-/* Headers en cards */
-.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {
-  color: var(--valorant-text) !important;
-}
-
-/* Textos específicos en el header de sesión */
-.card-body .text-dark {
-  color: var(--valorant-text) !important;
-}
-
-/* Labels en el ScoreBoard y otros componentes */
 .small, .text-small {
   color: var(--valorant-text-muted) !important;
 }
 
-/* Textos en botones de agentes */
-.agent-button small {
+/* Override específico para textos invisibles */
+.card *:not(.text-muted):not(.btn):not(.badge) {
   color: var(--valorant-text) !important;
 }
 
-.agent-button .text-muted {
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {
+  color: var(--valorant-text) !important;
+}
+
+.app-container * {
+  color: var(--valorant-text) !important;
+}
+
+.app-container .text-muted {
   color: var(--valorant-text-muted) !important;
 }
 
-/* Textos en modales */
-.modal-content .text-dark,
-.modal-content .text-muted {
-  color: var(--valorant-text) !important;
-}
-
-/* Textos en alerts */
-.alert .text-dark,
-.alert .text-muted {
-  color: inherit !important;
-}
-
-/* Textos específicos en el sistema de puntos */
-.game-rules .text-success {
-  color: #75b798 !important;
-}
-
-.game-rules .text-warning {
-  color: #f7d500 !important;
-}
-
-.game-rules .text-danger {
-  color: #ff8a98 !important;
-}
-
-.game-rules .text-info {
-  color: #6edff6 !important;
-}
-
-/* Textos en badges */
-.badge.text-dark {
-  color: var(--valorant-text) !important;
-}
-
-/* Textos en inputs placeholder */
-.form-control::placeholder {
-  color: var(--valorant-text-muted) !important;
-  opacity: 0.7 !important;
-}
-
-/* Textos en el ranking */
-.ranking-item .text-dark {
-  color: var(--valorant-text) !important;
-}
-
-.ranking-item .text-muted {
-  color: var(--valorant-text-muted) !important;
-}
-
-/* Textos en SessionStats */
-.session-stats .text-dark {
-  color: var(--valorant-text) !important;
-}
-
-.session-stats .text-muted {
-  color: var(--valorant-text-muted) !important;
-}
-
-/* Override específico para textos que siguen siendo oscuros */
 .text-dark, 
 .card .text-dark,
 .bg-light .text-dark,
@@ -478,7 +383,6 @@ body, html, #root {
   color: var(--valorant-text) !important;
 }
 
-/* Asegurar que todos los textos sean visibles */
 .component-container * {
   color: var(--valorant-text) !important;
 }
@@ -487,7 +391,6 @@ body, html, #root {
   color: var(--valorant-text-muted) !important;
 }
 
-/* Textos específicos en botones outline */
 .btn-outline-warning,
 .btn-outline-light,
 .btn-outline-dark {
@@ -500,122 +403,87 @@ body, html, #root {
   color: var(--valorant-dark) !important;
 }
 
-/* ===== COMPONENTES ESPECÍFICOS ===== */
-
-/* Grid de agentes */
-.agents-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.agent-button {
-  width: 140px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.agent-button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--valorant-red);
-  transform: translateY(-2px);
-}
-
-/* Botones Valorant */
-.valorant-btn {
-  background: var(--valorant-red);
-  border-color: var(--valorant-red);
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.valorant-btn:hover {
-  background: #e63e4d;
-  border-color: #e63e4d;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 70, 85, 0.4);
-}
-
-.valorant-btn.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* ===== UTILIDADES VALORANT ===== */
+.valorant-card {
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--valorant-gray) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
   color: var(--valorant-text);
 }
 
-.valorant-btn.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--valorant-red);
+.valorant-badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.375rem;
+  background: linear-gradient(135deg, var(--valorant-red), #cc3547);
 }
 
-/* Text colors para buen contraste */
-.text-dark {
-  color: var(--valorant-text) !important;
+.valorant-alert {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--valorant-text);
 }
 
-.text-muted {
-  color: var(--valorant-text-muted) !important;
+.valorant-alert-success {
+  background: rgba(40, 167, 69, 0.15);
+  border-color: rgba(40, 167, 69, 0.3);
+  color: #75b798;
 }
 
-.text-light {
-  color: var(--valorant-text) !important;
+.valorant-alert-danger {
+  background: rgba(255, 70, 85, 0.15);
+  border-color: rgba(255, 70, 85, 0.3);
+  color: #ff8a98;
 }
 
-/* ===== OVERRIDE NUCLEAR PARA TEXTOS ===== */
-
-/* Fuerza que TODOS los textos sean visibles */
-.app-container * {
-  color: var(--valorant-text) !important;
+.valorant-alert-warning {
+  background: rgba(247, 181, 0, 0.15);
+  border-color: rgba(247, 181, 0, 0.3);
+  color: #f7d500;
 }
 
-/* Excepto los textos muted que deben ser un poco más claros */
-.app-container .text-muted {
-  color: var(--valorant-text-muted) !important;
+.valorant-alert-info {
+  background: rgba(23, 162, 184, 0.15);
+  border-color: rgba(23, 162, 184, 0.3);
+  color: #6edff6;
 }
 
-/* Override específico para elementos que podrían tener color heredado */
-.card *:not(.text-muted):not(.btn):not(.badge) {
-  color: var(--valorant-text) !important;
+.valorant-status-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  color: #fff;
 }
 
-/* Para los botones que necesitan texto oscuro al hacer hover */
-.btn:hover * {
-  color: inherit !important;
+.valorant-status-warning {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+  color: #000;
 }
 
-/* Textos en agentes específicamente */
-.agent-button * {
-  color: var(--valorant-text) !important;
+.valorant-status-danger {
+  background: linear-gradient(135deg, var(--valorant-red), #cc3547);
+  color: #fff;
 }
 
-.agent-button .text-muted {
-  color: var(--valorant-text-muted) !important;
+.valorant-status-info {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: #fff;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .app-header h1 {
     font-size: 1.75rem;
-  }
-  
-  .agents-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0.6rem;
-  }
-  
-  .agent-button {
-    width: 110px;
-    height: 110px;
   }
   
   .app-main {

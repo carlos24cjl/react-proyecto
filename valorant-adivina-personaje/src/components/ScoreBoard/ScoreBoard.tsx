@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import './ScoreBoard.css';
 
 interface ScoreBoardProps {
   score: number;
@@ -9,14 +9,14 @@ interface ScoreBoardProps {
   totalRounds?: number;
 }
 
-const ScoreBoard: FC<ScoreBoardProps> = ({ 
+const ScoreBoard = ({ 
   score, 
   cluesUsed, 
   gameStatus, 
   incorrectGuesses,
   currentRound = 1,
   totalRounds = 1
-}) => {
+}: ScoreBoardProps) => {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'playing': return 'valorant-status-playing';

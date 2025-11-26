@@ -1,0 +1,9 @@
+/* Ranking Component Styles */
+
+.ranking-item .text-dark {
+  color: var(--valorant-text) !important;
+}
+
+.ranking-item .text-muted {
+  color: var(--valorant-text-muted) !important;
+}

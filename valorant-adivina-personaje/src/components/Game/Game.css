@@ -1,0 +1,33 @@
+/* Game Component Styles */
+
+.component-container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.centered-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-rules .text-success {
+  color: #75b798 !important;
+}
+
+.game-rules .text-warning {
+  color: #f7d500 !important;
+}
+
+.game-rules .text-danger {
+  color: #ff8a98 !important;
+}
+
+.game-rules .text-info {
+  color: #6edff6 !important;
+}

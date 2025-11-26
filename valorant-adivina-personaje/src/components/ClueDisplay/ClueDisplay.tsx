@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import './ClueDisplay.css';
 
 interface ClueDisplayProps {
   clue: string | null;
@@ -8,13 +8,13 @@ interface ClueDisplayProps {
   incorrectGuesses: number;
 }
 
-const ClueDisplay: FC<ClueDisplayProps> = ({ 
+const ClueDisplay = ({ 
   clue, 
   cluesUsed, 
   onUseClue, 
   gameStatus,
   incorrectGuesses
-}) => {
+}: ClueDisplayProps) => {
   const additionalClues = Math.max(0, cluesUsed - 1);
 
   return (

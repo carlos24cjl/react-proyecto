@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import type { FC } from 'react';
-import type { Agent, GameState, GameSession } from '../types/types';
-import AgentCard from './AgentCard';
-import ClueDisplay from './ClueDisplay';
-import ScoreBoard from './ScoreBoard';
-import AgentSelector from './AgentSelector';
-import Ranking from './Ranking';
+import type { Agent, GameState, GameSession } from '../../types/types';
+import AgentCard from '../AgentCard/AgentCard';
+import ClueDisplay from '../ClueDisplay/ClueDisplay';
+import ScoreBoard from '../ScoreBoard/ScoreBoard';
+import AgentSelector from '../AgentSelector/AgentSelector';
+import Ranking from '../Ranking/Ranking';
+import './Game.css';
 
-const Game: FC = () => {
+function Game() {
   const [gameState, setGameState] = useState<GameState>({
     currentAgent: null,
     cluesUsed: 1,
@@ -37,11 +37,13 @@ const Game: FC = () => {
     }
   }, []);
 
+  // Selecciona X agentes al azar de la lista total
   const getRandomAgents = (agents: Agent[], count: number): Agent[] => {
     const shuffled = [...agents].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
   };
 
+  // Inicia una nueva partida de 5 rondas con agentes aleatorios
   const initializeSession = (agents: Agent[]) => {
     const sessionAgents = getRandomAgents(agents, 5);
     const firstAgent = sessionAgents[0];
@@ -62,6 +64,7 @@ const Game: FC = () => {
     }));
   };
 
+  // Descarga la lista de agentes de Valorant al cargar la página
   useEffect(() => {
     const fetchAgents = async () => {
       try {
@@ -82,6 +85,7 @@ const Game: FC = () => {
 
  
 
+  // Devuelve la pista que corresponde según las pistas usadas
   const getNextClue = () => {
     if (!gameState.currentAgent) return null;
 
@@ -105,6 +109,7 @@ const Game: FC = () => {
     }));
   };
 
+  // Maneja el intento de adivinar: calcula puntos o penaliza fallos
   const handleGuess = (agentName: string) => {
     if (!gameState.currentAgent || gameState.gameStatus !== 'playing') return;
 
@@ -155,6 +160,7 @@ const Game: FC = () => {
     }));
   };
 
+  // Guarda la partida terminada en el ranking y localStorage
   const completeSession = (finalScore: number) => {
     const sessionId = `session_${Date.now()}`;
     
